@@ -46,10 +46,7 @@ filetype plugin indent on    " required
 
 
 
-" =======以下是设置===========================================================================================
-
-" 显示行号
-set nu
+" =======以下是插件设置===========================================================================================
 
 " YouCompleteMe设置
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
@@ -77,3 +74,28 @@ let g:ctrlp_user_command = 'find %s -type f'
 nmap <F3> :TagbarToggle<CR>
 " let g:tagbar_autofocus = 1  "自动焦点定位
 autocmd VimEnter * nested :TagbarOpen	" 打开vim时候自动打开
+
+
+
+" ===========以下是vim设置==========================================================================================
+
+" 让配置变更立即生效
+" autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+" 显示行号
+set nu
+
+" 开启语法高亮
+syntax on
+
+" 缩进大小
+set shiftwidth=4
+
+" Tab大小
+set tabstop=4
+
+" 基于缩进或语法进行代码折叠
+set foldmethod=syntax
+
+" 启动vim时候关闭折叠代码
+set nofoldenable
