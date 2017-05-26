@@ -1,3 +1,5 @@
+"vim版本：7.4
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -34,6 +36,20 @@ Plugin 'Raimondi/delimitMate'
 " Plugin on GitHub vim-signature
 Plugin 'kshenoy/vim-signature'
 
+" 搜索插件开始
+" Plugin on GitHub ack.vim
+Plugin 'mileszs/ack.vim'
+
+" Plugin on GitHub ack2
+Plugin 'petdance/ack2'
+
+" Plugin on GitHub the_silver_searcher(ag)
+Plugin 'ggreer/the_silver_searcher'
+" 搜索插件结束
+
+" Plugin on GitHub vim-multiple-cursors
+Plugin 'terryma/vim-multiple-cursors'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,7 +68,7 @@ filetype plugin indent on    " required
 
 
 
-" =======以下是插件设置===========================================================================================
+"=======以下是插件设置===========================================================================================
 
 " YouCompleteMe设置
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
@@ -62,6 +78,7 @@ let NERDTreeShowBookmarks=1	" 打开bookmark
 autocmd VimEnter * nested :NERDTree	" 打开vim时候自动打开树
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 nmap <F2> :NERDTreeToggle<CR>	" 显示或隐藏树
+let NERDTreeWinPos='left'		" 设置窗口在左边
 
 " ctrlp.vim设置
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -79,9 +96,10 @@ let g:ctrlp_user_command = 'find %s -type f'
 
 " tagbar设置
 nmap <F3> :TagbarToggle<CR>
-" let g:tagbar_autofocus = 1  "自动焦点定位
+"let g:tagbar_autofocus = 1  "自动焦点定位
 autocmd VimEnter * nested :TagbarOpen	" 打开vim时候自动打开
- 
+" let tagbar_left=1 "设置窗口在左边
+
 " vim-signature设置
 let g:SignatureMap = {
         \ 'Leader'             :  "m",
@@ -107,11 +125,13 @@ let g:SignatureMap = {
         \ 'ListLocalMarkers'   :  "m?"
         \ }
 
+" Ag设置
+let g:ackprg = 'ag --vimgrep --nogroup --nocolor --column'
 
-" ===========以下是vim设置==========================================================================================
+"===========以下是vim设置==========================================================================================
 
 " 让配置变更立即生效
-" autocmd BufWritePost $MYVIMRC source $MYVIMRC
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " 显示行号
 set number
@@ -147,4 +167,3 @@ set cursorcolumn
 
 " 高亮显示搜索结果
 set hlsearch
-
