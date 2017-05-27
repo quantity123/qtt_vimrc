@@ -47,8 +47,14 @@ Plugin 'petdance/ack2'
 Plugin 'ggreer/the_silver_searcher'
 " 搜索插件结束
 
-" Plugin on GitHub vim-multiple-cursors
+" Plugin on GitHub vim-multiple-cursors多重选择
 Plugin 'terryma/vim-multiple-cursors'
+
+" Plugin on GitHub a.vim(.c,.cpp与.h文件切换)
+Plugin 'vim-scripts/a.vim'
+
+" Plugin on GitHub syntastic
+Plugin 'vim-syntastic/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,9 +77,11 @@ filetype plugin indent on    " required
 "=======以下是插件设置===========================================================================================
 
 " YouCompleteMe设置
-let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py' "这个是启动项，否则没有补全
+let g:ycm_show_diagnostics_ui = 0	"关闭ycm自带的syntastic插件功能
+"let g:syntastic_auto_jump = 1 "自动跳到第一个问题代码地方
 
-" NERDTree设置
+" NERDTree
 let NERDTreeShowBookmarks=1	" 打开bookmark
 autocmd VimEnter * nested :NERDTree	" 打开vim时候自动打开树
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -127,6 +135,15 @@ let g:SignatureMap = {
 
 " Ag设置
 let g:ackprg = 'ag --vimgrep --nogroup --nocolor --column'
+
+" syntastic设置
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 "===========以下是vim设置==========================================================================================
 
