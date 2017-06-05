@@ -79,7 +79,14 @@ filetype plugin indent on    " required
 " YouCompleteMe设置
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py' "这个是启动项，否则没有补全
 let g:ycm_show_diagnostics_ui = 0	"关闭ycm自带的syntastic插件功能
-"let g:syntastic_auto_jump = 1 "自动跳到第一个问题代码地方
+let g:ycm_complete_in_comments=1	"补全功能在注释中同样有效
+let g:ycm_confirm_extra_conf=0		"允许vim加载.ycm_extra_conf.py文件，不再提示
+let g:ycm_collect_identifiers_from_tags_files=1	"开启ycm标签补全引擎
+inoremap <leader>; <C-x><C-o>		" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
+set completeopt-=preview		" 补全内容不以分割子窗口形式出现，只显示补全列表
+let g:ycm_min_num_of_chars_for_completion=1	"第一个键入字符就开始列匹配项
+let g:ycm_cache_omnifunc=0		"禁止缓存匹配项，每次都重新生成匹配项
+let g:ycm_seed_identifiers_with_syntax=1	"语法关键字补全
 
 " NERDTree
 let NERDTreeShowBookmarks=1	" 打开bookmark
@@ -87,6 +94,11 @@ autocmd VimEnter * nested :NERDTree	" 打开vim时候自动打开树
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 nmap <F2> :NERDTreeToggle<CR>	" 显示或隐藏树
 let NERDTreeWinPos='left'		" 设置窗口在左边
+let NERDTreeAutoDeleteBuffer=1	"删除文件时自动删除文件对应 Buffer
+let NERDTreeWinSize=32	"设置窗口的宽度
+" let NERDTreeShowHidden=1	"显示隐藏的文件
+" let NERDTreeMinimalUI=1	"不显示帮助面板
+" let NERDTreeQuitOnOpen=1 "打开文件后自动隐藏窗口
 
 " ctrlp.vim设置
 set runtimepath^=~/.vim/bundle/ctrlp.vim
@@ -144,6 +156,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+"let g:syntastic_auto_jump=1	"保存或打开文件时让光标自动跳转到检测到的第一个问题处
+
+
+
+
 
 "===========以下是vim设置==========================================================================================
 
@@ -184,3 +201,4 @@ set cursorcolumn
 
 " 高亮显示搜索结果
 set hlsearch
+
