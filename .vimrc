@@ -1,3 +1,4 @@
+"系统平台: linuxmint18-cinnamon-64bit
 "vim版本：7.4
 
 set nocompatible              " be iMproved, required
@@ -53,8 +54,16 @@ Plugin 'terryma/vim-multiple-cursors'
 " Plugin on GitHub a.vim(.c,.cpp与.h文件切换)
 Plugin 'vim-scripts/a.vim'
 
-" Plugin on GitHub syntastic
+" Plugin on GitHub syntastic(语法解析)
 Plugin 'vim-syntastic/syntastic'
+
+" Plugin on GitHub vim-bufferline(缓冲区列表显示行)
+Plugin 'bling/vim-bufferline'
+
+" 显示bufer的窗口与tab
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -158,9 +167,24 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 "let g:syntastic_auto_jump=1	"保存或打开文件时让光标自动跳转到检测到的第一个问题处
 
-
-
-
+" vim-airline设置
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+set laststatus=2
+"切换tab的键盘映射
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>= <Plug>AirlineSelectNextTab
 
 "===========以下是vim设置==========================================================================================
 
@@ -169,6 +193,9 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " 显示行号
 set number
+
+"突出显示当前行
+set cursorline
 
 " 开启语法高亮
 syntax on
@@ -182,9 +209,15 @@ set shiftwidth=4
 " Tab大小
 set tabstop=4
 
+"开始折叠代码
+set foldenable
+
 " 基于缩进或语法进行代码折叠
 "set foldmethod=indent	"基于缩进进行折叠
 set foldmethod=syntax	"基于语法进行折叠
+
+"自动关闭代码折叠
+set foldclose=all
 
 " 启动vim时关闭折叠代码
 set nofoldenable
@@ -192,7 +225,7 @@ set nofoldenable
 " 总是显示状态栏
 "set laststatus=2
 
-" 显示光标当前位置
+" 显示光标当前位置,状态栏标尺
 "set ruler
 
 " 高亮显示当前行/列
@@ -202,3 +235,14 @@ set cursorcolumn
 " 高亮显示搜索结果
 set hlsearch
 
+"覆盖时不备份
+"set nobackup
+
+"自动切换当前目录为当前文件所在的目录
+set autochdir
+
+"输入搜索内容时就显示搜索结果
+set incsearch
+
+"搜索时高亮显示被找到的文本
+set hlsearch
