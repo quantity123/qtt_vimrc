@@ -230,13 +230,15 @@ set nofoldenable
 
 " 高亮显示当前行/列
 set cursorline
-set cursorcolumn
+"set cursorcolumn
 
 " 高亮显示搜索结果
 set hlsearch
 
-"覆盖时不备份
+"覆盖时不备份,取消自动备份及产生swp文件
 "set nobackup
+"set nowb
+"set noswapfile
 
 "自动切换当前目录为当前文件所在的目录
 set autochdir
@@ -246,3 +248,20 @@ set incsearch
 
 "搜索时高亮显示被找到的文本
 set hlsearch
+
+"让代码整齐美观的Tab对齐竖线
+"显示tab和空格
+set list
+"设置tab和空格样式
+set lcs=tab:\|\ 
+"设定行首tab为灰色
+highlight LeaderTab guifg=#666666
+"匹配行首tab
+match LeaderTab /^\t/
+
+"自动缩进
+set autoindent
+set cindent
+
+"高亮显示匹配的括号
+"set showmatch
