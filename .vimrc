@@ -243,9 +243,11 @@ set hlsearch
 "自动切换当前目录为当前文件所在的目录
 set autochdir
 
-"输入搜索内容时就显示搜索结果
+"查找相关
+"重新搜索，在搜索到文件头或尾部时，返回继续搜索，默认开启。
+set wrapscan
+"输入搜索内容时就显示搜索结果(逐步搜索模式)
 set incsearch
-
 "搜索时高亮显示被找到的文本
 set hlsearch
 
