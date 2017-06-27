@@ -238,7 +238,7 @@ set hlsearch
 "覆盖时不备份,取消自动备份及产生swp文件
 "set nobackup
 "set nowb
-"set noswapfile
+set noswapfile
 
 "自动切换当前目录为当前文件所在的目录
 set autochdir
